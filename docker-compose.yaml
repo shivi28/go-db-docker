@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app-container:
+    image: go-db-docker
+    ports:
+      - 8001:8080
+  mysqlcustom:
+    image: mysqlcustom
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=goblog
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
+    driver: local
